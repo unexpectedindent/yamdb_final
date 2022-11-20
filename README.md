@@ -1,7 +1,9 @@
 # Проект YaMDb
-https://github.com/unexpectedindent/yamdb_final/actions/workflows/yamdb_workflow/badge.svg
+![yamdb_workflow.yml](https://github.com/unexpectedindent/yamdb_final/actions/workflows/yamdb_workflow/badge.svg)
 
-### Описание проекта
+* [Описание проекта][description]
+
+[description] ### Описание проекта
 
 Проект YaMDb собирает отзывы пользователей на произведения. Произведения делятся на категории, например, «Книги», «Фильмы», «Музыка». Список категорий может быть меняться администратором.
 Сами произведения в YaMDb не хранятся, здесь нельзя посмотреть фильм или послушать музыку.
