@@ -1,9 +1,17 @@
 # Проект YaMDb
 ![yamdb_workflow.yml](https://github.com/unexpectedindent/yamdb_final/actions/workflows/yamdb_workflow/badge.svg)
 
-* [Описание проекта][description]
+* [Описание проекта](description)
+* [Технологии](tech)
+* [Запуск](launch)
+* [Функциональность](func)
+  * [Пользовательские роли](roles)
+  * [Ресурсы](res)
+  * [Регистрация и авторизация](sign)
+  * [Документация](doc)
 
-[description] ### Описание проекта
+
+### [Описание проекта](description)
 
 Проект YaMDb собирает отзывы пользователей на произведения. Произведения делятся на категории, например, «Книги», «Фильмы», «Музыка». Список категорий может быть меняться администратором.
 Сами произведения в YaMDb не хранятся, здесь нельзя посмотреть фильм или послушать музыку.
@@ -12,7 +20,7 @@
 Пользователи могут оставлять к произведениям текстовые отзывы и ставить произведению оценку в диапазоне от одного до десяти (целое число); из пользовательских оценок формируется усреднённая оценка произведения — рейтинг (целое число). На одно произведение пользователь может оставить только один отзыв.
 
 
-### Используемые технологии
+### [Используемые технологии](tech)
 
 * python
 * django
@@ -22,7 +30,7 @@
 * gunicorn
 * docker
 
-### Запуск проекта
+### [Запуск проекта](launch)
 
 1. Скопируйте репозитарий на свой компьютер:
 ```bash
@@ -33,13 +41,13 @@ git clone https://github.com/unexpectedindent/yamdb_final.git
 scp infra/docker-compose.yaml <username on server>@<IP-address of your server>:/<directory on the server> && scp -r infra/nginx <username on server>@<IP-address of your server>:/<directory on the server>
 ```
 3. Создайте в удаленном репозитарии на github переменные окружения: <Your repository> -> Settings -> Secrets -> Actions: New repository secret:
-`DOCKER_USERNAME` - Ваш логин на hub.docker.com
-`DOCKER_PASSWORD` - Ваш пароль на hub.docker.com
-`DOCKER_REPOS` - имя репозитария на hub.docker.com
-`HOST` - ip-адрес вашего сервера
-`USER` - имя пользователя на сервере
-`SSH_KEY` - приватный ssh-ключ (`cat ~/.ssh/id_rsa` начиная с `-----BEGIN OPENSSH PRIVATE KEY-----` до `-----END OPENSSH PRIVATE KEY-----`)
-`PASSPHRASE` - пароль, защищающий ssh-ключ
+* `DOCKER_USERNAME` - Ваш логин на hub.docker.com
+* `DOCKER_PASSWORD` - Ваш пароль на hub.docker.com
+* `DOCKER_REPOS` - имя репозитария на hub.docker.com
+* `HOST` - ip-адрес вашего сервера
+* `USER` - имя пользователя на сервере
+* `SSH_KEY` - приватный ssh-ключ (`cat ~/.ssh/id_rsa` начиная с `-----BEGIN OPENSSH PRIVATE KEY-----` до `-----END OPENSSH PRIVATE KEY-----`)
+* `PASSPHRASE` - пароль, защищающий ssh-ключ
 
 А также переменные, которые будут скопированы в `.env`
 ```
@@ -68,16 +76,16 @@ sudo docker-compose -p api_yamdb exec web python manage.py createsuperuser
 sudo docker-compose exec web python manage.py collectstatic --no-input
 ```
 
-## Функциональность
+## [Функциональность](func)
 
-### Пользовательские роли
+### [Пользовательские роли](roles)
 
 1. Пользователь: может просматривать списки категорий, жанров, а также изучать информацию о произведениях. Также может писать отзывы на произведения и комментарии к отзывам. Может редактировать и/или удалять собственные отзывы и комментарии.
 2. Модератор: обладает теми же правами, что и пользователь, но дополнительно имеет права на изменение и/или удаление отзывов и комментариев любых других пользователей.
 3. Администратор: в дополнение к правам модератора может добавлять/удалять категории и жанры, добавлять/удалять произведения, регистрировать и удалять новых пользователей, менять роли пользователям.
 
 
-### Ресурсы
+### [Ресурсы](res)
 
 1. Ресурс auth (auth/): аутентификация.
 2. Ресурс users (users/): пользователи.
@@ -88,13 +96,13 @@ sudo docker-compose exec web python manage.py collectstatic --no-input
 7. Ресурс comments (titles/[id]/reviews/[id]/comments/): комментарии к отзывам. Комментарий привязан к определённому отзыву.
 
 
-### Регистрация и авторизация
+### [Регистрация и авторизация](sign)
 
 1. Пользователь отправляет POST-запрос с параметрами "email" и "username" на эндпоинт /api/v1/auth/signup/.
 2. Сервис YaMDB отправляет письмо с кодом подтверждения (confirmation_code) на указанный адрес email.
 3. Пользователь отправляет POST-запрос с параметрами username и confirmation_code на эндпоинт /api/v1/auth/token/, в ответе на запрос ему приходит token (JWT-токен).
 
 
-### Полная документация к API расположена тут:
+### [Полная документация к API расположена тут:](doc)
 
 `<Your host>/ReDoc/`
