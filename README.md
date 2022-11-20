@@ -1,10 +1,6 @@
 # Проект YaMDb
 https://github.com/unexpectedindent/yamdb_final/actions/workflows/yamdb_workflow/badge.svg
 
-[* Описание проекта](### Описание проекта)
-[* Технологии](### Используемые технологии)
-
-
 ### Описание проекта
 
 Проект YaMDb собирает отзывы пользователей на произведения. Произведения делятся на категории, например, «Книги», «Фильмы», «Музыка». Список категорий может быть меняться администратором.
@@ -99,4 +95,4 @@ sudo docker-compose exec web python manage.py collectstatic --no-input
 
 ### Полная документация к API расположена тут:
 
-<Your host>/ReDoc/
+`<Your host>/ReDoc/`
